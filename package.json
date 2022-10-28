@@ -1,0 +1,44 @@
+{
+  "name": "react-mui-snackbar",
+  "version": "1.0.0",
+  "description": "A React package helpers for mui snackbar",
+  "main": "../cjs/index.js",
+  "module": "esm/index.jsx",
+  "scripts": {
+    "build": "../node_modules/.bin/rollup -c",
+    "release": "../node_modules/.bin/standard-version",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alexandrebdry/react-mui-snackbar"
+  },
+  "keywords": [
+    "react",
+    "mui",
+    "react-mui",
+    "snackbar",
+    "react-mui-snackbar",
+    "mui-helpers",
+    "helpers",
+    "snackbar-helpers",
+    "react-mui-snackbar-helpers"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/plugin-transform-react-jsx-compat": "^7.18.6",
+    "@babel/preset-env": "^7.19.3",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^19.0.2",
+    "@rollup/plugin-replace": "^3.1.0",
+    "react": "^18.2.0",
+    "rollup": "^2.79.1",
+    "standard-version": "^9.5.0"
+  },
+  "author": "Alexandre BAUDRY - alexandrebdry",
+  "license": "MIT ",
+  "types": "./esm/index.js",
+  "dependencies": {
+    "@mui/material": "^5.10.11"
+  }
+}

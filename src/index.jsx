@@ -2,7 +2,7 @@ import {createContext, useContext, useState} from "react" ;
 import {Alert, Snackbar} from "@mui/material";
 
 export const SnackbarContext = createContext({}) ;
-export const SnackbarProvider = ({children}) => {
+const SnackbarProvider = ({children}) => {
 
     const [open, setOpen] = useState(false) ;
     const [message, setMessage] = useState('') ;
@@ -17,7 +17,8 @@ export const SnackbarProvider = ({children}) => {
         }
     };
     const closeSnackbar = () => {setOpen(false) ;}
-    return (<SnackbarContext.Provider value={{openSnackbar}}>
+    return (
+        <SnackbarContext.Provider value={{openSnackbar}}>
         {
             message &&
             <Snackbar open={open} onClose={closeSnackbar} autoHideDuration={6000}>
@@ -27,6 +28,8 @@ export const SnackbarProvider = ({children}) => {
             </Snackbar>
         }
         {children}
-    </SnackbarContext.Provider>)
+    </SnackbarContext.Provider>
+    )
 }
 export const useSnackbarContext = () => useContext(SnackbarContext) ;
+export default SnackbarProvider ;

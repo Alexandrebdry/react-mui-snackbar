@@ -10,25 +10,42 @@ npm install react-mui-snackbar
 ## Usage 
 
 ```jsx
-//in app.jsx call the provider
-function App() {
-    return (
-        <SnackbarProvider>
-            <div className="app">
-                <Header/>
-                <Router/> 
-            </div>
-        </SnackbarProvider>
-    ); 
-}
+// Create your react app with SnackbarProvider
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
+import App from './App';
+import {BrowserRouter} from 'react-router-dom';
+import SnackbarProvider  from "react-mui-snackbar" ;
+
+createRoot(document.getElementById('root')).render(
+    <StrictMode>
+        <BrowserRouter>
+            <SnackbarProvider>
+                <App />
+            </SnackbarProvider>
+        </BrowserRouter>
+    </StrictMode>
+);
+
 ```
 then
 ```jsx
-//in other jsx file 
-const {openSnackbar} = useSnackbarContext() ; 
-function openTheSnackBar () {
-    openSnackbar('It will open the snackbar','info') ; 
+// Use the Snackbar context to get openSnackbar method. 
+import {SnackbarContext} from "react-mui-snackbar";
+import {useContext} from "react";
+
+function App() {
+
+    const {openSnackbar} = useContext(SnackbarContext) ;
+
+    return (
+        <div>
+            <button onClick={() => {openSnackbar('OPEN', {/* sucess | error | warning | info => success by default*/})}}>open snackbar</button> 
+        </div>
+    )
 }
+
+export default App ;
 ```
 openSnackbar method have two arguments. 
  - **Message** : *mandatory*   - string

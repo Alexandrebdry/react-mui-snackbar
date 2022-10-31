@@ -1,9 +1,8 @@
-import {createContext, useContext, useState} from "react" ;
+import React,{createContext, useContext, useState} from "react" ;
 import {Alert, Snackbar} from "@mui/material";
 
-const SnackbarContext = createContext({}) ;
-
-export default function SnackbarProvider  ({children}) {
+export const SnackbarContext = createContext({}) ;
+const SnackbarProvider = ({children}) => {
 
     const [open, setOpen] = useState(false) ;
     const [message, setMessage] = useState('') ;
@@ -32,4 +31,4 @@ export default function SnackbarProvider  ({children}) {
     </SnackbarContext.Provider>
     )
 }
-export function useSnackbarContext () {useContext(SnackbarContext)}
+export default SnackbarProvider ;

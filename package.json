@@ -1,6 +1,6 @@
 {
   "name": "react-mui-snackbar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React package helpers for mui snackbar",
   "module": "cjs/index.js",
   "scripts": {

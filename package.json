@@ -1,6 +1,6 @@
 {
   "name": "react-mui-snackbar",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "description": "A React package helpers for mui snackbar",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

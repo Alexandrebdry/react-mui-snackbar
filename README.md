@@ -40,19 +40,28 @@ function App() {
 
     return (
         <div>
-            <button onClick={() => {openSnackbar('OPEN', {/* sucess | error | warning | info => success by default*/})}}>open snackbar</button> 
+            <button onClick={() => {openSnackbar('OPEN', 
+                {/* sucess | error | warning | info => success by default ,
+                 duration => 2000 */}) 
+            }}>
+                open snackbar
+            </button> 
         </div>
     )
 }
 
 export default App ;
 ```
-openSnackbar method have two arguments. 
+openSnackbar method have 3 arguments. 
  - **Message** : *mandatory*   - string
  - **Severity** : *optional*   - string
+ - **duration** : *optional* - int
 
 severity can take : success | info | warning | error 
 ##### success by default
+
+duration must be > 0 
+#### 6000 by default  (6s) 
 
 # Authors and acknowledgment
  - [Alexandre BAUDRY](https://github.com/Alexandrebdry)

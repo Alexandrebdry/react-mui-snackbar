@@ -1,8 +1,10 @@
 # React MUI Snackbar
 This is a react MUI helper for snackbar. Thanks to this package you can open a new 
 snackbar by using useSnackbarContext method.
-![Installed size](https://badgen.net/packagephobia/install/react-mui-snackbar)
+
 [![NPM Version](https://badgen.net/npm/v/react-mui-snackbar)](https://www.npmjs.com/package/react-mui-snackbar)
+
+![Installed size](https://badgen.net/packagephobia/install/react-mui-snackbar)
 ![Vulnerabilities count](https://badgen.net/snyk/Alexandrebdry/react-mui-snackbar/)
 
 #### MIT License

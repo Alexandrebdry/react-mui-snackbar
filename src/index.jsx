@@ -1,15 +1,16 @@
-import React,{createContext, useState} from "react" ;
+import React, {createContext, useCallback, useContext, useState} from "react" ;
 import {Alert, Snackbar} from "@mui/material";
 
 export const SnackbarContext = createContext({}) ;
+
 const SnackbarProvider = ({children}) => {
 
     const [open, setOpen] = useState(false) ;
     const [message, setMessage] = useState('') ;
-    const [severity, setSeverity] = useState('') ;
+    const [severity, setSeverity] = useState('success') ;
     const [duration, setDuration] = useState(6000) ;
 
-    const openSnackbar = (message, severity = 'success' , duration = 0) => {
+    const openSnackbar = useCallback( ({message: message, severity: severity = 'success' , duration: duration = 6000}) => {
         if (typeof message !== "string") return
         if(severity === 'info' || severity === 'success' || severity === 'warning' || severity === 'error') {
             setMessage(message) ;
@@ -18,7 +19,8 @@ const SnackbarProvider = ({children}) => {
         }
         if(duration > 0 && typeof duration === "number")
             setDuration(duration) ;
-    };
+    },[message,open,severity]);
+
     const closeSnackbar = () => {setOpen(false) ;}
     return (
         <SnackbarContext.Provider value={{openSnackbar}}>
@@ -34,4 +36,7 @@ const SnackbarProvider = ({children}) => {
     </SnackbarContext.Provider>
     )
 }
+
 export default SnackbarProvider ;
+export const useSnackBarContext = () => useContext(SnackbarContext) ;
+

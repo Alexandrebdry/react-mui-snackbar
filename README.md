@@ -34,28 +34,31 @@ createRoot(document.getElementById('root')).render(
 
 ```
 then
+
 ```jsx
 // Use the Snackbar context to get openSnackbar method. 
-import {SnackbarContext} from "react-mui-snackbar";
-import {useContext} from "react";
+import {useSnackBarContext} from "react-mui-snackbar";
 
 function App() {
 
-    const {openSnackbar} = useContext(SnackbarContext) ;
+    const {openSnackbar} = useSnackBarContext() ;
 
     return (
         <div>
-            <button onClick={() => {openSnackbar('OPEN', 
-                {/* sucess | error | warning | info => success by default ,
-                 duration => 2000 */}) 
+            <button onClick={() => {
+                openSnackbar({
+                    message:'OPEN', 
+                    severity: 'success' , /* sucess | error | warning | info => success by default , */
+                    duration: 3000 // 6000 by default
+                })
             }}>
                 open snackbar
-            </button> 
+            </button>
         </div>
     )
 }
 
-export default App ;
+export default App;
 ```
 openSnackbar method have 3 arguments. 
  - **Message** : *mandatory*   - string

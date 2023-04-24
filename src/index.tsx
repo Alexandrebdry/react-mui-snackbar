@@ -1,18 +1,18 @@
-import React, {createContext, ReactNode, useCallback, useContext, useState} from "react";
+import React from "react";
 import {Alert, AlertColor, Snackbar} from "@mui/material";
 
-export const SnackbarContext = createContext({}) ;
+export const SnackbarContext = React.createContext({}) ;
 
 export interface SnackbarProviderProps {
-    children: ReactNode
+    children: React.ReactNode
 }
 
 
 const SnackbarProvider = ( {children} : SnackbarProviderProps ) => {
-    const [open, setOpen] = useState(false);
-    const [severity, setSeverity] = useState<AlertColor>("success");
-    const [message, setMessage] = useState("");
-    const [duration, setDuration] = useState(6000) ;
+    const [open, setOpen] = React.useState(false);
+    const [severity, setSeverity] = React.useState<AlertColor>("success");
+    const [message, setMessage] = React.useState("");
+    const [duration, setDuration] = React.useState(6000) ;
 
     interface openSnackbarInterface {
         message: string
@@ -20,7 +20,7 @@ const SnackbarProvider = ( {children} : SnackbarProviderProps ) => {
         duration: number
 
     }
-    const openSnackbar = useCallback(({
+    const openSnackbar = React.useCallback(({
         severity  = "success",
         duration = 6000,
         message
@@ -52,4 +52,4 @@ const SnackbarProvider = ( {children} : SnackbarProviderProps ) => {
 }
 
 export default SnackbarProvider ;
-export const useSnackbarContext = () => useContext(SnackbarContext) ;
+export const useSnackbarContext = () => React.useContext(SnackbarContext) ;

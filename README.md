@@ -9,7 +9,7 @@ snackbar by using useSnackbarContext method.
 
 #### MIT License
 
-## NEWS V3.0.0
+## NEWS V3.1.0
 The package has been rebuilt in Typescript to fully support it.
 
 ## Installation
@@ -43,11 +43,11 @@ then
 
 ```jsx
 // Use the Snackbar context to get openSnackbar method. 
-import {useSnackBarContext} from "react-mui-snackbar";
+import {useSnackbarContext} from "react-mui-snackbar";
 
 function App() {
 
-    const {openSnackbar} = useSnackBarContext() ;
+    const {openSnackbar} = useSnackbarContext() ;
 
     return (
         <div>

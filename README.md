@@ -8,6 +8,10 @@ snackbar by using useSnackbarContext method.
 ![Vulnerabilities count](https://badgen.net/snyk/Alexandrebdry/react-mui-snackbar/)
 
 #### MIT License
+
+## NEWS V3.0.0
+The package has been rebuilt in Typescript to fully support it.
+
 ## Installation
 ```bash
 npm install react-mui-snackbar

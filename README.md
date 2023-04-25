@@ -1,24 +1,22 @@
-# React MUI Snackbar
-This is a react MUI helper for snackbar. Thanks to this package you can open a new 
-snackbar by using useSnackbarContext method.
+# React MUI Snackbar 
+This library helps you to use [MUI Snackbar](https://mui.com/material-ui/react-snackbar/)
+across your app. 
+Thanks to the Provider you can simply use the `openSnackbar` methods in your pages to display a new message. 
+
+It manages opening/closing, message edition, duration and severity ! 
+
+TypeScript support -  100%
 
 [![NPM Version](https://badgen.net/npm/v/react-mui-snackbar)](https://www.npmjs.com/package/react-mui-snackbar)
-
 ![Installed size](https://badgen.net/packagephobia/install/react-mui-snackbar)
 ![Vulnerabilities count](https://badgen.net/snyk/Alexandrebdry/react-mui-snackbar/)
 
 #### MIT License
 
-## NEWS V3.1.0
-The package has been rebuilt in Typescript to fully support it.
+### Demo
+[View demo here]( https://react-mui-snackbar-testing-page.vercel.app/)
 
-## Installation
-```bash
-npm install react-mui-snackbar
-```
-
-
-## Usage 
+## Setup 
 
 ```jsx
 // Create your react app with SnackbarProvider
@@ -39,7 +37,8 @@ createRoot(document.getElementById('root')).render(
 );
 
 ```
-then
+
+## Usage
 
 ```jsx
 // Use the Snackbar context to get openSnackbar method. 
@@ -54,8 +53,8 @@ function App() {
             <button onClick={() => {
                 openSnackbar({
                     message:'OPEN', 
-                    severity: 'success' , /* sucess | error | warning | info => success by default , */
-                    duration: 3000 // 6000 by default
+                    severity: 'success' , 
+                    duration: 3000 
                 })
             }}>
                 open snackbar
@@ -66,17 +65,20 @@ function App() {
 
 export default App;
 ```
-openSnackbar method have 3 arguments. 
- - **Message** : *mandatory*   - string
- - **Severity** : *optional*   - string
- - **duration** : *optional* - int
 
-severity can take : success | info | warning | error 
-##### success by default
+## Function parameters
+### openSnackbar methods
+| Parameter | Type     |  Description  | Default |
+| :-------- | :------- | :-------------------------------- | ------ |
+| `message`      | `string` | **Required**. The message to display | `null` |
+| `severity` | `AlertColor` | It can be `success`, `info`, `warning` or `error` | `success` |
+| `duration` | `number` | in millisecond (ms) | `6000` (6s) |
 
-duration must be > 0 
-#### 6000 by default  (6s) 
 
-# Authors and acknowledgment
- - [Alexandre BAUDRY](https://github.com/Alexandrebdry)
- - [Amin NAIRI](https://github.com/aminnairi)
+## Next steps  - Coming soon
+
+- Possibility to stack alert
+- Custom position 
+- Unit test
+
+

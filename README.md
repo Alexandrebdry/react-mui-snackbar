@@ -14,7 +14,7 @@ TypeScript support -  100%
 #### MIT License
 
 ### Demo
-[View demo here]( https://react-mui-snackbar-testing-page.vercel.app/)
+[View demo here]( https://alexandrebdry.vercel.app/react-mui-snackbar)
 
 ## Setup 
 

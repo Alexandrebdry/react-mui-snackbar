@@ -15,7 +15,6 @@ export default defineConfig({
         "react",
         "@mui/material"
     ],
-
     plugins: [
         remove({
             verbose: true,
@@ -45,6 +44,6 @@ export default defineConfig({
         {
             file: pk.main,
             format: "cjs"
-        }
+        },
     ]
 })

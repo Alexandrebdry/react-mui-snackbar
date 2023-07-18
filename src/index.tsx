@@ -1,55 +1,60 @@
 import React from "react";
-import {Alert, AlertColor, Snackbar} from "@mui/material";
+import {SnackbarOrigin} from "@mui/material";
+import SnackbarContent, {SnackbarContentInterface} from "./SnackbarContent";
 
-export const SnackbarContext = React.createContext({}) ;
+interface SnackbarContextInterface {
+    openSnackbar: (snackbar: SnackbarContentInterface) => void
+}
+export const SnackbarContext = React.createContext({} as SnackbarContextInterface) ;
 
 export interface SnackbarProviderProps {
     children: React.ReactNode
+    duration?: number
+    position?: SnackbarOrigin
 }
 
+const SnackbarProvider = ( {
+    children,
+    duration = 6000,
+    position = {
+        vertical: 'bottom',
+        horizontal: 'left'
+    },
+} : SnackbarProviderProps ) => {
 
-const SnackbarProvider = ( {children} : SnackbarProviderProps ) => {
-    const [open, setOpen] = React.useState(false);
-    const [severity, setSeverity] = React.useState<AlertColor>("success");
-    const [message, setMessage] = React.useState("");
-    const [duration, setDuration] = React.useState(6000) ;
+    const [snackbar, setSnackbar] = React.useState<SnackbarContentInterface>() ;
 
-    interface openSnackbarInterface {
-        message: string
-        severity: AlertColor
-        duration: number
+    const openSnackbar = React.useCallback( ({message,severity = ""}: SnackbarContentInterface) => {
 
-    }
-    const openSnackbar = React.useCallback(({
-        severity  = "success",
-        duration = 6000,
-        message
-    } :openSnackbarInterface  )=> {
+        setSnackbar({
+            message: message,
+            severity: severity
+        })
 
-        setMessage(message) ;
-        setSeverity(severity) ;
-        if(duration > 0)
-            setDuration(duration) ;
-        else setDuration(6000) ;
-        setOpen(true) ;
+    },[snackbar] );
 
-    }  , [message,open,severity]) ;
 
-    const closeSnackbar = () => {setOpen(false) ;}
+    const closeSnackbar = React.useCallback(() => {
+        setSnackbar(undefined) ;
+    }, []) ;
+
     return (
         <SnackbarContext.Provider value={{openSnackbar}}>
             {
-                message &&
-                <Snackbar open={open} onClose={closeSnackbar} autoHideDuration={duration}>
-                    <Alert onClose={closeSnackbar} severity={severity} sx={{width:'100%'}}>
-                        {message}
-                    </Alert>
-                </Snackbar>
+                snackbar &&
+                <SnackbarContent
+                    direction={position?.horizontal === "left" ? "right" : "left"}
+                    position={position}
+                    duration={duration}
+                    message={snackbar.message}
+                    severity={snackbar.severity}
+                    callback={closeSnackbar}
+                />
             }
             {children}
         </SnackbarContext.Provider>
     )
 }
 
-export default SnackbarProvider ;
+export default React.memo(SnackbarProvider) ;
 export const useSnackbarContext = () => React.useContext(SnackbarContext) ;
